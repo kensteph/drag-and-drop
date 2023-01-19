@@ -5,6 +5,106 @@
 }
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:wght@400;700&display=swap');
 
+:root {
+  --border-color: #e3e5e4;
+  --background-color: #c3c7ca;
+  --text-color: #34444f;
+  --right: #3ae374;
+  --wrong: #ff3838;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  
+  background-color: #fff;
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+}
+
+h1 {
+  margin: 20px;
+}
+
+.draggable-list {
+  margin-top: 20px;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  list-style: none;
+}
+
+.draggable-list li {
+  background-color: #fff;
+  display: flex;
+  flex: 1;
+}
+
+/* Style all of the li except the last one */
+.draggable-list li:not(:last-of-type) {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.draggable-list .position {
+  background-color: var(--background-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  height: 60px;
+  width: 60px;
+}
+
+.draggable {
+  cursor: move;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  flex: 1;
+}
+
+.check-btn {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: 10px;
+  background-color: var(--background-color);
+  border: none;
+  font-size: 16px;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.check-btn:active {
+  transform: scale(0.9);
+}
+
+.check-btn:focus {
+  outline: none;
+}
+
+/* When we are over a li item. yhis item should be darker */
+.draggable-list li.over .draggable {
+  background-color: #eaeaea;
+}
+
+.draggable-list .mountain-name {
+  margin: 0 20px 0 0;
+}
+
+/* Every li with the class 'right' shoud be green*/
+.draggable-list li.right .mountain-name {
+  color: var(--right);
+}
+/* Every li with the class 'wrong' shoud be red*/
+.draggable-list li.wrong .mountain-name {
+  color: var(--wrong);
 }
