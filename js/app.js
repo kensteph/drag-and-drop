@@ -24,12 +24,27 @@ let dragStartIndex;
 const swapItems = (from, to) => {
   const itemOne = listItems[from].querySelector('.draggable');
   const itemTow = listItems[to].querySelector('.draggable');
-  console.log(itemOne, itemTow);
   // Swap the items
   // From become to
   listItems[from].appendChild(itemTow);
   // To become From
   listItems[to].appendChild(itemOne);
+};
+
+// Check if the order is correct
+const checkOrder = () => {
+  // Loop over the list items Elements
+  listItems.forEach((listItem, index) => {
+    const mountainName = listItem
+      .querySelector('.draggable p')
+      .innerText.trim();
+    if (mountainName !== highestMountains[index]) {
+      listItem.classList.add('wrong');
+    } else {
+      listItem.classList.remove('wrong');
+      listItem.classList.add('right');
+    }
+  });
 };
 
 // ================== function for each event =================
@@ -101,6 +116,7 @@ const generateList = () => {
   addEventListeners();
 };
 
+// Event on the check button
+const checkBtn = document.querySelector('#check');
+checkBtn.addEventListener('click', checkOrder);
 generateList();
-
-console.log(listItems);
